@@ -1,7 +1,9 @@
-package com.schneide.abas.billard.inner.domain.model;
+package com.schneide.abas.billard.inner.domain.model.composite;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.schneide.abas.billard.inner.domain.model.basic.Ball;
 
 public class Table {
 

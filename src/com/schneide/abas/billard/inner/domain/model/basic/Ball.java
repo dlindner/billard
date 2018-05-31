@@ -1,4 +1,4 @@
-package com.schneide.abas.billard.inner.domain.model;
+package com.schneide.abas.billard.inner.domain.model.basic;
 
 public class Ball {
 

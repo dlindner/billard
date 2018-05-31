@@ -1,10 +1,14 @@
-package com.schneide.abas.billard.inner.domain.model;
+package com.schneide.abas.billard.inner.domain.model.composite;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.schneide.abas.billard.inner.domain.model.basic.Ball;
+
 public class BallSet implements Iterable<Ball> {
+
+	public static final int size = 16;
 
 	private final List<Ball> balls;
 
@@ -19,7 +23,7 @@ public class BallSet implements Iterable<Ball> {
 
 	public static BallSet create() {
 		final BallSet result = new BallSet();
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < size; i++) {
 			result.add(Ball.createFor(i));
 		}
 		return result;
