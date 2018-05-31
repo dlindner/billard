@@ -28,12 +28,12 @@ public class Table {
 	public Iterable<Ball> strikeBy(Player activePlayer) {
 		final List<Ball> result = new ArrayList<>();
 		for (Ball each : this.placed) {
-			//System.out.println("Calculating for " + each);
 			if (activePlayer.ability().isPocketed(each)) {
 				result.add(each);
 			}
 		}
 		this.placed.removeAll(result);
+		this.placed.add(Ball.white);
 		return result;
 	}
 

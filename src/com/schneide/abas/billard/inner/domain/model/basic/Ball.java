@@ -2,6 +2,8 @@ package com.schneide.abas.billard.inner.domain.model.basic;
 
 public class Ball {
 
+	public static final Ball white = new Ball(0, Suit.white);
+
 	private int number;
 	private Suit suit;
 
@@ -9,6 +11,10 @@ public class Ball {
 		super();
 		this.number = number;
 		this.suit = suit;
+	}
+
+	public boolean hasSuit(Suit required) {
+		return this.suit.equals(required);
 	}
 
 	@Override
@@ -21,7 +27,7 @@ public class Ball {
 			throw new IllegalArgumentException("Balls need to have a number between 0 and 15, not " + number);
 		}
 		if (0 == number) {
-			return new Ball(0, Suit.white);
+			return white;
 		}
 		if (8 == number) {
 			return new Ball(8, Suit.black);
