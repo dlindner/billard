@@ -8,11 +8,13 @@ import java.util.Random;
 
 public class Player {
 
-	private String name;
+	private final String name;
+	private final Pocketing ability;
 
-	public Player(String name) {
+	public Player(String name, Ability pocketing) {
 		super();
 		this.name = name;
+		this.ability = pocketing;
 	}
 
 	public String name() {
@@ -24,10 +26,41 @@ public class Player {
 		return "player " + name();
 	}
 
+	public Pocketing ability() {
+		return this.ability;
+	}
+
 	public static Player randomBy(Random randomness) {
 		Collections.shuffle(remainingNames, randomness);
 		final String currentName = remainingNames.remove(0);
-		return new Player(currentName);
+		final double abilityFactor = randomness.nextDouble() * 0.05D + 0.02D;
+		System.out.println(currentName + ": " + abilityFactor);
+		return new Player(
+				currentName,
+				new Ability(
+						abilityFactor,
+						randomness));
+	}
+
+	public static class Ability implements Pocketing {
+
+		private final double factor;
+		private final Random randomness;
+
+		public Ability(
+				final double factor,
+				final Random randomness) {
+			super();
+			this.factor = factor;
+			this.randomness = randomness;
+		}
+
+		@Override
+		public boolean isPocketed(Ball ball) {
+			final double currentRandomValue = randomness.nextDouble();
+			//System.out.println(currentRandomValue + " < " + this.factor);
+			return (currentRandomValue < this.factor);
+		}
 	}
 
 	private static final List<String> remainingNames = new ArrayList<>(

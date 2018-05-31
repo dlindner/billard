@@ -27,6 +27,10 @@ public final class Main {
 		final BallSet balls = BallSet.create();
 		game.startWith(balls);
 
+		while (true) {
+			game.turn();
+			Thread.sleep(100L);
+		}
 
 	}
 }

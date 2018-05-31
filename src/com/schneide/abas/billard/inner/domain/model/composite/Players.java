@@ -18,7 +18,7 @@ public class Players implements Iterator<Player> {
 	}
 
 	public Player current() {
-		return this.asList.get(currentIndex % 2);
+		return playerAt(this.currentIndex);
 	}
 
 	public Player next() {
@@ -29,5 +29,17 @@ public class Players implements Iterator<Player> {
 	@Override
 	public boolean hasNext() {
 		return true;
+	}
+
+	private Player playerAt(int index) {
+		return this.asList.get(index % 2);
+	}
+
+	public Player first() {
+		return playerAt(0);
+	}
+
+	public Player second() {
+		return playerAt(1);
 	}
 }
