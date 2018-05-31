@@ -19,6 +19,13 @@ public class BillardRules {
 		if (0 == remainingBalls) {
 			return resultFor(GameState.won, NextPlayer.change);
 		}
+//		player Ludwig pockets [Ball 1 (full)]
+//				The game is ongoing with 14 balls on the table
+//				-----
+//				player Ludwig pockets [Ball 12 (half), Ball 8 (black)]
+//				The game is ongoing with 12 balls on the table
+
+
 		for (Ball each : pocketedBalls) {
 			if (each.hasSuit(Suit.black)) {
 				return resultFor(GameState.lost, NextPlayer.change);

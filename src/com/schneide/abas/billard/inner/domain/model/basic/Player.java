@@ -58,7 +58,6 @@ public class Player {
 		@Override
 		public boolean isPocketed(Ball ball) {
 			final double currentRandomValue = randomness.nextDouble();
-			//System.out.println(currentRandomValue + " < " + this.factor);
 			return (currentRandomValue < this.factor);
 		}
 	}
@@ -80,7 +79,7 @@ public class Player {
 				"Norbert",
 				"Olga",
 				"Patrick",
-				"Roswita",
+				"Roswitha",
 				"Steffen",
 				"Tanja",
 				"Ullrich",

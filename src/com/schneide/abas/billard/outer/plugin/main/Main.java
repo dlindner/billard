@@ -16,13 +16,12 @@ public final class Main {
 	}
 
 	public static void main(String[] arguments) throws InterruptedException {
-		final Random randomness = new Random();
+		final Random randomness = createRandomnessFor(arguments);
 
 		final Players players = new Players(
 				Player.randomBy(randomness),
 				Player.randomBy(randomness));
 		final Table playfield = new Table();
-
 		final Game game = new Game(
 				players,
 				playfield,
@@ -34,8 +33,24 @@ public final class Main {
 		boolean gameCommences = true;
 		while (gameCommences) {
 			gameCommences = game.turn();
-			Thread.sleep(500L);
+			Thread.sleep(2000L);
 			System.out.println("-----");
 		}
+	}
+
+	private static Random createRandomnessFor(String[] arguments) {
+		final long randomSeed = randomSeedFrom(arguments);
+		System.out.println("Random seed: " + randomSeed);
+		final Random result = new Random(randomSeed);
+		return result;
+	}
+
+	private static long randomSeedFrom(String[] arguments) {
+		if (arguments.length > 0) {
+			return Long.parseLong(arguments[0]);
+		}
+		final Random seedGenerator = new Random();
+		final long randomSeed = seedGenerator.nextLong();
+		return randomSeed;
 	}
 }

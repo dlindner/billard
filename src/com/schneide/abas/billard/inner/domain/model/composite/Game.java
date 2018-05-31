@@ -50,7 +50,7 @@ public class Game {
 				this.suitAssociation.get(activePlayer),
 				pocketed,
 				remainingBalls);
-		String additionalInfo = "";
+		String additionalInfo = " with " + remainingBalls + " balls on the table";
 		if (GameState.ongoing != turnResult.state()) {
 			additionalInfo = " for " + activePlayer;
 		}
