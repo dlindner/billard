@@ -8,7 +8,7 @@ import com.schneide.abas.billard.inner.domain.model.basic.Player;
 import com.schneide.abas.billard.inner.domain.model.basic.Suit;
 import com.schneide.abas.billard.inner.domain.rules.BillardRules;
 import com.schneide.abas.billard.inner.domain.rules.GameState;
-import com.schneide.abas.billard.inner.domain.rules.ShotResult;
+import com.schneide.abas.billard.inner.domain.rules.StrikeResult;
 
 public class Game {
 
@@ -39,7 +39,7 @@ public class Game {
 		final Iterable<Ball> pocketed = this.table.strikeBy(activePlayer);
 		System.out.println(activePlayer + " pockets " + pocketed);
 		final int remainingBalls = this.table.ballCount();
-		final ShotResult turnResult = this.rules.evaluateStrike(
+		final StrikeResult turnResult = this.rules.evaluateStrike(
 				this.suitAssociation.get(activePlayer),
 				pocketed,
 				remainingBalls);
