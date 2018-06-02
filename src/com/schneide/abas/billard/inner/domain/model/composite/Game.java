@@ -28,13 +28,6 @@ public class Game {
 		this.suitAssociation = associateSuitsTo(players);
 	}
 
-	private Map<Player, Suit> associateSuitsTo(Players currentPlayers) {
-		final Map<Player, Suit> result = new HashMap<>();
-		result.put(currentPlayers.first(), Suit.full);
-		result.put(currentPlayers.second(), Suit.half);
-		return result;
-	}
-
 	public Game startWith(BallSet balls) {
 		this.table.clear();
 		this.table.place(balls);
@@ -57,5 +50,12 @@ public class Game {
 		System.out.println("The game is " + turnResult.state() + additionalInfo);
 		turnResult.successor().applyTo(this.players);
 		return (GameState.ongoing == turnResult.state());
+	}
+
+	private Map<Player, Suit> associateSuitsTo(Players currentPlayers) {
+		final Map<Player, Suit> result = new HashMap<>();
+		result.put(currentPlayers.first(), Suit.full);
+		result.put(currentPlayers.second(), Suit.half);
+		return result;
 	}
 }
