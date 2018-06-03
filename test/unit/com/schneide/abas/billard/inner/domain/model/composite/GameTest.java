@@ -20,7 +20,7 @@ public class GameTest {
 		final Game target = new Game(
 				players(),
 				table,
-				null);
+				irrelevant());
 		Assertions.assertThat(table.ballCount()).isZero();
 		target.startWith(BallSet.create());
 		Assertions.assertThat(table.ballCount()).isEqualTo(BallSet.size);
@@ -32,7 +32,7 @@ public class GameTest {
 		final Game target = new Game(
 				players(),
 				table,
-				null);
+				irrelevant());
 		final BallSet balls = BallSet.create();
 		target.startWith(balls);
 
@@ -45,5 +45,9 @@ public class GameTest {
 		return new Players(
 				mock(Player.class),
 				mock(Player.class));
+	}
+
+	private static <T> T irrelevant() {
+		return null;
 	}
 }

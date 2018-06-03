@@ -20,7 +20,7 @@ public class BillardRulesTest {
 	public void noBallGotPocketed() {
 		final BillardRules target = new BillardRules();
 		final StrikeResult result = target.evaluateStrike(
-				null,
+				irrelevant(),
 				Collections.emptyList(),
 				BallSet.size);
 		assertThat(result.state()).isEqualTo(GameState.ongoing);
@@ -31,7 +31,7 @@ public class BillardRulesTest {
 	public void whiteBallGotPocketed() {
 		final BillardRules target = new BillardRules();
 		final StrikeResult result = target.evaluateStrike(
-				null,
+				irrelevant(),
 				Arrays.asList(Ball.white),
 				BallSet.size);
 		assertThat(result.state()).isEqualTo(GameState.ongoing);
@@ -42,7 +42,7 @@ public class BillardRulesTest {
 	public void blackBallGotPocketedNotAsLastBall() {
 		final BillardRules target = new BillardRules();
 		final StrikeResult result = target.evaluateStrike(
-				null,
+				irrelevant(),
 				Arrays.asList(Ball.createFor(8)),
 				BallSet.size);
 		assertThat(result.state()).isEqualTo(GameState.lost);
@@ -93,7 +93,7 @@ public class BillardRulesTest {
 	@Test
 	public void blackGotPocketedAsLastBallAlongWithWhite() {
 		final StrikeResult result = strikeFor(
-				null,
+				irrelevant(),
 				0,
 				Ball.createFor(8),
 				Ball.white);
@@ -103,7 +103,7 @@ public class BillardRulesTest {
 	@Test
 	public void blackGotPocketedAsLastBall() {
 		final StrikeResult result = strikeFor(
-				null,
+				irrelevant(),
 				1,
 				Ball.createFor(8));
 		assertThat(result.state()).isEqualTo(GameState.won);
@@ -112,7 +112,7 @@ public class BillardRulesTest {
 	@Test
 	public void blackGotPocketedWithOtherBalls() {
 		final StrikeResult result = strikeFor(
-				null,
+				irrelevant(),
 				12,
 				Ball.createFor(12),
 				Ball.createFor(8));
@@ -137,5 +137,9 @@ public class BillardRulesTest {
 				requiredSuit,
 				Arrays.asList(pocketedBalls),
 				remainingBalls);
+	}
+
+	private static <T> T irrelevant() {
+		return null;
 	}
 }

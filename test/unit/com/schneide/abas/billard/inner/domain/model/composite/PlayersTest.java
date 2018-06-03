@@ -37,6 +37,12 @@ public class PlayersTest {
 	}
 
 	private Player player(String name) {
-		return new Player(name, null);
+		return new Player(
+				name,
+				irrelevant());
+	}
+
+	private static <T> T irrelevant() {
+		return null;
 	}
 }

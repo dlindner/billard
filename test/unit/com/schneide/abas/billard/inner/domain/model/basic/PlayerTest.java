@@ -14,7 +14,11 @@ public class PlayerTest {
 		final String expectedName = "remembered name";
 		final Player target = new Player(
 				expectedName,
-				null);
+				irrelevant());
 		assertThat(target.name()).isEqualTo(expectedName);
+	}
+
+	private static <T> T irrelevant() {
+		return null;
 	}
 }
