@@ -9,7 +9,7 @@ public class BillardRules {
 		super();
 	}
 
-	public ShotResult evaluateStrike(
+	public StrikeResult evaluateStrike(
 			Suit playerSuit,
 			Iterable<Ball> pocketedBalls,
 			int remainingBalls) {
@@ -38,10 +38,10 @@ public class BillardRules {
 		return resultFor(GameState.ongoing, NextPlayer.stay);
 	}
 
-	private ShotResult resultFor(
+	private StrikeResult resultFor(
 			final GameState state,
 			final NextPlayer next) {
-		return new ShotResult() {
+		return new StrikeResult() {
 			@Override
 			public NextPlayer successor() {
 				return next;

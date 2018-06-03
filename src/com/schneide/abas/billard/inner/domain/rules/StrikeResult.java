@@ -1,6 +1,6 @@
 package com.schneide.abas.billard.inner.domain.rules;
 
-public interface ShotResult {
+public interface StrikeResult {
 
 	public GameState state();
 

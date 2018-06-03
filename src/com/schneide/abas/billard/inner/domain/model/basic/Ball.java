@@ -1,13 +1,13 @@
 package com.schneide.abas.billard.inner.domain.model.basic;
 
-public class Ball {
+public final class Ball {
 
 	public static final Ball white = new Ball(0, Suit.white);
 
 	private int number;
 	private Suit suit;
 
-	public Ball(int number, Suit suit) {
+	private Ball(int number, Suit suit) {
 		super();
 		this.number = number;
 		this.suit = suit;
